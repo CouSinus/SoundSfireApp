@@ -1,0 +1,22 @@
+fr/cpe/sfireinc/databinding/ActivityMainBinding.java
+ fr.cpe.sfireinc.databinding.ActivityMainBinding
+fr/cpe/sfireinc/databinding/AudioFileListFragmentBinding.java
+ fr.cpe.sfireinc.databinding.AudioFileListFragmentBinding
+fr/cpe/sfireinc/BuildConfig.java
+ fr.cpe.sfireinc.BuildConfig
+fr/cpe/sfireinc/DataBindingTriggerClass.java
+ fr.cpe.sfireinc.DataBindingTriggerClass
+fr/cpe/sfireinc/databinding/AudioFileItemBinding.java
+ fr.cpe.sfireinc.databinding.AudioFileItemBinding
+fr/cpe/sfireinc/MainActivity.java
+ fr.cpe.sfireinc.MainActivity
+fr/cpe/sfireinc/AudioFile.java
+ fr.cpe.sfireinc.AudioFile
+fr/cpe/sfireinc/AudioFileListAdapter.java
+ fr.cpe.sfireinc.AudioFileListAdapter
+ fr.cpe.sfireinc.AudioFileListAdapter$ViewHolder
+ fr.cpe.sfireinc.AudioFileListAdapter$ViewHolder$1
+fr/cpe/sfireinc/AudioFileViewModel.java
+ fr.cpe.sfireinc.AudioFileViewModel
+fr/cpe/sfireinc/AudioFileListFragment.java
+ fr.cpe.sfireinc.AudioFileListFragment
