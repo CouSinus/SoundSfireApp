@@ -1,5 +1,8 @@
 package fr.cpe.sfireinc;
 
+import android.content.ContentUris;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -23,31 +26,39 @@ public class AudioFileListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        List<AudioFile> fakeList = new ArrayList<>();
+
+
+        List<AudioFile> audioList = new ArrayList<>();
+
+        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI; // La carte SD
+        String[] projection = {MediaStore.Audio.Media.DATA, MediaStore.Audio.Media._ID,
+                MediaStore.Audio.Media.TITLE, MediaStore.Audio.Media.ARTIST, MediaStore.Audio.Media.ALBUM, MediaStore.Audio.Media.DURATION
+        , MediaStore.Audio.Media.RELATIVE_PATH, MediaStore.Audio.Media.YEAR};
+        //chemin du fichier, ID, titre, artist
+        Cursor cursor = getContext().getContentResolver().query(uri,projection,null,null,null);
+
+        if(cursor != null){
+            AudioFile audio = new AudioFile();
+            while(cursor.moveToNext()) {
+                cursor.getString(0);
+                audio.setAlbum(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM)));
+                audio.setArtist(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)));
+                audio.setDuration(cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)));
+                audio.setFilePath(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.RELATIVE_PATH)));
+                audio.setGenre(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.GENRE)));
+                audio.setTitle(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)));
+                audio.setYear(cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR)));
+
+                audioList.add(audio);
+            }
+        }
+
+
         AudioFileListFragmentBinding binding = DataBindingUtil.inflate(inflater,
                 R.layout.audio_file_list_fragment,container,false);
         binding.audioFileList.setLayoutManager(new LinearLayoutManager(
                 binding.getRoot().getContext()));
-
-        AudioFile Astronaute = new AudioFile();
-        Astronaute.setTitle("Astronaute");
-        Astronaute.setAlbum("Astronaute - Single");
-        Astronaute.setArtist("An'Om & Vayn");
-        Astronaute.setGenre("Hip-Hop/Rap");
-        Astronaute.setYear(2018);
-        Astronaute.setDuration(439);
-        fakeList.add(Astronaute);
-
-        AudioFile JulithVsKerubim = new AudioFile();
-        JulithVsKerubim.setTitle("Julith Vs Kérubim");
-        JulithVsKerubim.setAlbum("Dofus Livre 1: Julith");
-        JulithVsKerubim.setArtist("Guillaume Houzé");
-        JulithVsKerubim.setGenre("Miscellaneous");
-        JulithVsKerubim.setYear(2015);
-        JulithVsKerubim.setDuration(295);
-        fakeList.add(JulithVsKerubim);
-
-        binding.audioFileList.setAdapter(new AudioFileListAdapter(fakeList));
+        binding.audioFileList.setAdapter(new AudioFileListAdapter(audioList));
         return binding.getRoot();
     }
 }

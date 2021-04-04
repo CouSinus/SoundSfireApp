@@ -1,5 +1,8 @@
 fr/cpe/sfireinc/databinding/ActivityMainBinding.java
  fr.cpe.sfireinc.databinding.ActivityMainBinding
+fr/cpe/sfireinc/PlayerService.java
+ fr.cpe.sfireinc.PlayerService
+ fr.cpe.sfireinc.PlayerService$PlayerBinder
 fr/cpe/sfireinc/databinding/AudioFileListFragmentBinding.java
  fr.cpe.sfireinc.databinding.AudioFileListFragmentBinding
 fr/cpe/sfireinc/BuildConfig.java
