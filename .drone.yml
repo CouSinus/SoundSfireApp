@@ -2,6 +2,6 @@ kind: pipeline
 type: exec
 name: default
 steps:
-  - name: build
-commands:
+- name: build
+  commands:
   - bash ./gradlew assembleDebug
