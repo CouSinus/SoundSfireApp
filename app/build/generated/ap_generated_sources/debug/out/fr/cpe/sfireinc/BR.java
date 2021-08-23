@@ -11,5 +11,7 @@ public class BR {
 
   public static final int duration = 4;
 
-  public static final int title = 5;
+  public static final int filePath = 5;
+
+  public static final int title = 6;
 }

@@ -26,4 +26,8 @@ public class AudioFileViewModel extends BaseObservable {
     public String getDuration() {
         return (audioFile.getDurationText());
     }
+    @Bindable
+    public String getFilePath() {
+        return (audioFile.getFilePath());
+    }
 }

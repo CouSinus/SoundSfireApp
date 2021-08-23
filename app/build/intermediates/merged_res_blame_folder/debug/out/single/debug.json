@@ -32,16 +32,20 @@
         "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+        "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\raw_sample_6s.mp3.flat",
+        "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\src\\main\\res\\raw\\sample_6s.mp3"
+    },
+    {
+        "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\layout_audio_file_item.xml.flat",
+        "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\src\\main\\res\\layout\\audio_file_item.xml"
     },
     {
         "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
         "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\layout_audio_file_item.xml.flat",
-        "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\src\\main\\res\\layout\\audio_file_item.xml"
+        "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
         "merged": "C:\\Users\\maxim\\AndroidStudioProjects\\Gr11\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
