@@ -1,11 +1,9 @@
 package fr.cpe.sfireinc;
 
-// Usefull Link -> https://developer.android.com/training/data-storage/shared/media
+// Useful Link -> https://developer.android.com/training/data-storage/shared/media
 
-import android.content.ContentUris;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -15,7 +13,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,11 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import fr.cpe.sfireinc.databinding.AudioFileListFragmentBinding;
 
 public class AudioFileListFragment extends Fragment {
-    @RequiresApi(api = Build.VERSION_CODES.R)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,8 +32,6 @@ public class AudioFileListFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         List<AudioFile> audioList = new ArrayList<>();
-        List<AudioFile> audioListExternal = new ArrayList<>();
-        List<AudioFile> audioListInternal = new ArrayList<>();
 
         AudioFileListFragmentBinding binding = DataBindingUtil.inflate(inflater,
                 R.layout.audio_file_list_fragment,container,false);
@@ -63,9 +58,10 @@ public class AudioFileListFragment extends Fragment {
         };
 
         for (Uri uri : uriAudio) {
-            Cursor cursor = this.getContext().getContentResolver().query(uri, audioProjection, null, null, null);
+            Log.e("InfoUri", uri.toString());
+            Cursor cursor = Objects.requireNonNull(this.getContext()).getContentResolver().query(uri, audioProjection, null, null, null);
 
-            int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
+            assert cursor != null;
             int titleColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.TITLE);
             int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION);
             int dataColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
@@ -75,10 +71,12 @@ public class AudioFileListFragment extends Fragment {
             int yearColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR);
 
             while (cursor.moveToNext()) {
+                /*
                 String path = cursor.getString(0);
                 Uri audioFileUri = ContentUris.withAppendedId(
                         MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                         cursor.getLong(1));
+                        **/
 
                 audioList.add(new AudioFile.AudioBuilder(cursor.getString(titleColumn), cursor.getInt(durationColumn), cursor.getString(dataColumn))
                         .album(cursor.getString(albumColumn))

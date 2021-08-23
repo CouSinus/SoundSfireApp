@@ -3,6 +3,7 @@ package fr.cpe.sfireinc;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.net.sip.SipSession;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -59,34 +60,49 @@ public class AudioFileListAdapter extends
             super(binding.getRoot());
             this.binding = binding;
             this.binding.setAudioFileViewModel(viewModel);
+            mediaPlayer = new MediaPlayer();
             this.binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    stopMusic();
-                    Toast.makeText(v.getContext(), "Current playing: " + ViewHolder.this.viewModel.getTitle(), Toast.LENGTH_SHORT).show();
-                    /*MediaPlayer mediaPlayer = MediaPlayer.create(v.getContext(), Uri.parse(ViewHolder.this.viewModel.getFilePath()));
-                    mediaPlayer.start();*/
                     Uri myUri = Uri.parse(ViewHolder.this.viewModel.getFilePath()); // initialize Uri here
-                    mediaPlayer = new MediaPlayer();
-                    try {
-                        mediaPlayer.setDataSource(v.getContext(), myUri);
-                        mediaPlayer.prepare();
-                        mediaPlayer.start();
-                    } catch (IOException e) {
-                       e.getMessage();
-                    }
 
-
-                }
-
-                private void stopMusic() {
-                    if (mediaPlayer != null) {
+                    if(mediaPlayer != null && mediaPlayer.isPlaying()) {
                         mediaPlayer.stop();
                         mediaPlayer.release();
                         mediaPlayer = null;
+                        mediaPlayer=MediaPlayer.create(v.getContext(), myUri);
+                        mediaPlayer.start();
                     }
+                    else {
+                        mediaPlayer = MediaPlayer.create(v.getContext(), myUri);
+                        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                            @Override
+                            public void onPrepared(MediaPlayer arg0) {
+                                mediaPlayer.start();
+
+                            }
+
+                        });
+                    }
+
+                    /*mediaPlayer.prepareAsync();
+                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+                        public void onPrepared(MediaPlayer mp) {
+                            mediaPlayer.start();
+                            Toast.makeText(v.getContext(), "Current playing: " + ViewHolder.this.viewModel.getTitle(), Toast.LENGTH_SHORT).show();
+                        }
+                    });*/
                 }
             });
+        }
+
+        private void stopPlaying() {
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                mediaPlayer = null;
+            }
         }
     }
 }
