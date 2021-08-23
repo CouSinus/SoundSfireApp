@@ -60,7 +60,6 @@ public class AudioFileListAdapter extends
             this.binding = binding;
             this.binding.setAudioFileViewModel(viewModel);
             this.binding.getRoot().setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(View v) {
                     stopMusic();
@@ -69,12 +68,6 @@ public class AudioFileListAdapter extends
                     mediaPlayer.start();*/
                     Uri myUri = Uri.parse(ViewHolder.this.viewModel.getFilePath()); // initialize Uri here
                     mediaPlayer = new MediaPlayer();
-                    mediaPlayer.setAudioAttributes(
-                            new AudioAttributes.Builder()
-                                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                                    .build()
-                    );
                     try {
                         mediaPlayer.setDataSource(v.getContext(), myUri);
                         mediaPlayer.prepare();

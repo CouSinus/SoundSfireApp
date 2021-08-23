@@ -43,6 +43,7 @@ public class AudioFileListFragment extends Fragment {
         binding.audioFileList.setLayoutManager(new LinearLayoutManager(
                 binding.getRoot().getContext()));
 
+
         List<Uri> uriAudio = new ArrayList<>();
 
         uriAudio.add(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
