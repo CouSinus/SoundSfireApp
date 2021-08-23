@@ -4,7 +4,8 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 public class AudioFileViewModel extends BaseObservable {
-    private AudioFile audioFile = new AudioFile();
+    private AudioFile audioFile;
+
     public void setAudioFile(AudioFile file) {
         audioFile = file;
         notifyChange();
@@ -23,6 +24,6 @@ public class AudioFileViewModel extends BaseObservable {
     }
     @Bindable
     public String getDuration() {
-        return audioFile.getDurationText();
+        return (audioFile.getDurationText());
     }
 }
