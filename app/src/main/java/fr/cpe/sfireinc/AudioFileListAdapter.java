@@ -80,7 +80,7 @@ public class AudioFileListAdapter extends
                         mediaPlayer.prepare();
                         mediaPlayer.start();
                     } catch (IOException e) {
-                        Toast.makeText(v.getContext(), "ça plante", Toast.LENGTH_SHORT).show();
+                       e.getMessage();
                     }
 
 
