@@ -15,6 +15,8 @@ fr/cpe/sfireinc/MainActivity.java
  fr.cpe.sfireinc.MainActivity
 fr/cpe/sfireinc/AudioFile.java
  fr.cpe.sfireinc.AudioFile
+ fr.cpe.sfireinc.AudioFile$1
+ fr.cpe.sfireinc.AudioFile$AudioBuilder
 fr/cpe/sfireinc/AudioFileListAdapter.java
  fr.cpe.sfireinc.AudioFileListAdapter
  fr.cpe.sfireinc.AudioFileListAdapter$ViewHolder
