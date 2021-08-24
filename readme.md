@@ -17,6 +17,8 @@ Maxime R.
 * on y prépare la musique et on récupère le chemin du fichier pour le jouer. Il est important de stopper
 * le mediaplayer à chaque click sinon les musiques se superposent et le tout se transforme en brouhaha
 
+* Ajout du bouton pause/resume
+
 * N'ayant pas de Samsung disponible sous la main, nous n'avons pas pu tester sur un vrai appareil. 
 * Cependant les résultats sur VM ont été satisfaisant.
 
