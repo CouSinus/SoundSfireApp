@@ -2,7 +2,9 @@ package fr.cpe.sfireinc;
 
 // Useful Link -> https://developer.android.com/training/data-storage/shared/media
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +29,12 @@ import java.util.Objects;
 
 import fr.cpe.sfireinc.databinding.AudioFileListFragmentBinding;
 
+import static fr.cpe.sfireinc.AudioFileListAdapter.mediaPlayer;
+
 public class AudioFileListFragment extends Fragment {
+
+    private int length = 0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -32,11 +42,34 @@ public class AudioFileListFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         List<AudioFile> audioList = new ArrayList<>();
+        Button bPlay;
+
 
         AudioFileListFragmentBinding binding = DataBindingUtil.inflate(inflater,
                 R.layout.audio_file_list_fragment,container,false);
         binding.audioFileList.setLayoutManager(new LinearLayoutManager(
                 binding.getRoot().getContext()));
+
+        bPlay = binding.PlayButton;
+        bPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*if(mediaPlayer == null){
+                    Toast.makeText(v.getContext(), "Aucune musique n'est jouée", Toast.LENGTH_SHORT).show();
+                }else */
+                if(mediaPlayer.isPlaying()){
+                    mediaPlayer.pause();
+                    length = mediaPlayer.getCurrentPosition();
+                    Toast.makeText(v.getContext(), "Pause", Toast.LENGTH_SHORT).show();
+                }else{
+                    mediaPlayer.pause();
+                    mediaPlayer.seekTo(length);
+                    mediaPlayer.start();
+                    Toast.makeText(v.getContext(), "Play", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
 
 
         List<Uri> uriAudio = new ArrayList<>();
@@ -89,6 +122,7 @@ public class AudioFileListFragment extends Fragment {
 
             cursor.close();
         }
+
 
         binding.audioFileList.setAdapter(new AudioFileListAdapter(audioList));
         return binding.getRoot();

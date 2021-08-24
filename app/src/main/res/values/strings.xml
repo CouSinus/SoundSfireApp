@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SoundSfire</string>
+    <string name="Play">PlayButton</string>
 </resources>

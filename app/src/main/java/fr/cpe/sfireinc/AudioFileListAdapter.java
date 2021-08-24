@@ -1,5 +1,6 @@
 package fr.cpe.sfireinc;
 
+import android.annotation.SuppressLint;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,7 @@ public class AudioFileListAdapter extends
         AudioFileItemBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.audio_file_item, parent,false);
+
 
         return new ViewHolder(binding);
     }
@@ -84,17 +87,9 @@ public class AudioFileListAdapter extends
 
                         });
                     }
-
-                    /*mediaPlayer.prepareAsync();
-                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-
-                        public void onPrepared(MediaPlayer mp) {
-                            mediaPlayer.start();
-                            Toast.makeText(v.getContext(), "Current playing: " + ViewHolder.this.viewModel.getTitle(), Toast.LENGTH_SHORT).show();
-                        }
-                    });*/
                 }
             });
+
         }
 
         private void stopPlaying() {
@@ -105,4 +100,5 @@ public class AudioFileListAdapter extends
             }
         }
     }
+
 }

@@ -15,6 +15,7 @@ public class AudioFileListFragmentBindingImpl extends AudioFileListFragmentBindi
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.audio_file_list, 1);
+        sViewsWithIds.put(R.id.PlayButton, 2);
     }
     // views
     @NonNull
@@ -25,10 +26,11 @@ public class AudioFileListFragmentBindingImpl extends AudioFileListFragmentBindi
     // Inverse Binding Event Handlers
 
     public AudioFileListFragmentBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 2, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 3, sIncludes, sViewsWithIds));
     }
     private AudioFileListFragmentBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
+            , (android.widget.Button) bindings[2]
             , (androidx.recyclerview.widget.RecyclerView) bindings[1]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
