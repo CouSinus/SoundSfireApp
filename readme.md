@@ -22,4 +22,5 @@ Maxime R.
 * N'ayant pas de Samsung disponible sous la main, nous n'avons pas pu tester sur un vrai appareil. 
 * Cependant les résultats sur VM ont été satisfaisant.
 
+lien github : https://github.com/CouSinus/SoundSfireApp
 
